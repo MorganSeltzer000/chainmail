@@ -1,0 +1,51 @@
+.TH "CHAINMAIL" "1" "06/01/2021" 
+.SH NAME
+chainmail \- a program for calculating various numbers related to making chainmail
+.SH SYNOPSIS
+.B chainmail
+[\fIoptions\fR]
+.SH DESCRIPTION
+This program calculates various numbers related to making chainmail, such as wire gauge, aspect ratio, and other useful numbers.
+.TP
+\fB\-d\fR,\fB\-\-inner\-diameter\fR \fIsize\fR \fIunit\fR
+Passes in the inner diameter and the \fIsize\fR and \fIunit\fR of that diameter.
+.TP
+\fB\-i\fR,\fB\-\-interactive
+Instead of taking measurements from command line arguments, the program interactively asks the user to input measurements.
+.PP
+\fB\-o\fR,\fB\-\-output\fR \fItype\fR
+.RS
+Specifies the output type. Options are any \fIunit\fR or \fIattribute\fR:
+.PP
+\fBAWG\fR: If the size of the wire has been passed in some other form, returns it in AWG.
+\fBSWG\fR: If the size of the wire has been passed in some other form, returns it in SWG.
+.RE
+.TP
+\fB\-w\fR,\fB\-\-wire\-diameter\fR \fIsize\fR \fIunit\fR
+Passes in the wire diameter and the \fIsize\fR and \fIunit\fR of that diameter.
+.PP
+The following is a list of all the options for a \fIunit\fR:
+.PP
+\fBAWG,American Wire Gauge\fR:
+.RS
+A standard scale for measuring wire diameter, comprised of positive integers and zero. Larger numbers represent a thinner wire. AWG may be calculated from inches using the formula AWG=-39*log92(d/.005), where log92 is log base 92.
+.PP
+The standard does technically allow for numbers smaller than zero, representing them with increasing amounts of 0's, however sizes that large are not practical for chainmail and thus are not valid in this program.
+.RE
+.PP
+\fBSWG,Standard Wire Gauge\fR:
+.RS
+A standard scale for measuring wire diameter, comprised of integers [0,50]. Larger numbers represent a thinner wire. There is no formula for SWG, only a table of values.
+.PP
+Similarly to AWG, there are some numbers smaller than zero, again not included due to lack of meaningful value.
+.RE
+.PP
+\fBin,inches\fR:
+.RS
+A standard unit of measurement.
+.RE
+.PP
+\fBmm,millimeters\fR:
+.RS
+A standard unit of measurement.
+.RE
